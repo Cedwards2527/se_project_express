@@ -1,0 +1,30 @@
+{
+  "name": "se_project_express",
+  "version": "1.0.0",
+  "description": "\"Backend API built with Express.js.\"",
+  "keywords": [
+    "[\"express\"",
+    "\"node\"",
+    "\"server\"",
+    "\"api\"",
+    "\"backend\"",
+    "\"web\"",
+    "\"javascript\"",
+    "\"rest\"]"
+  ],
+  "homepage": "https://github.com/Cedwards2527/se_project_express#readme",
+  "bugs": {
+    "url": "https://github.com/Cedwards2527/se_project_express/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cedwards2527/se_project_express.git"
+  },
+  "license": "ISC",
+  "author": "Charles Edwards",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
