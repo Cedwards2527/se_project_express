@@ -6,21 +6,24 @@ const clothingItemSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    enum: ["hot", "warm", "cold"],
+
     minlength: 2,
     maxlength: 30,
   },
   weather: {
     type: String,
     required: true,
+    enum: ["hot", "warm", "cold"],
   },
   imageURL: {
     type: String,
-    required: true,
-    validator(value) {
-      return validator.isURL(value);
+    required: [true, "A Link is required"],
+    validate: {
+      validator(value) {
+        return validator.isURL(value);
+      },
+      message: "You must ente a valid URL",
     },
-    message: "Link is not Valid",
   },
 });
 
