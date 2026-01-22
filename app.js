@@ -17,9 +17,12 @@ app.use((req, res, next) => {
 app.use("/", mainRouter);
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/wtwr_db")
+  .connect("mongodb://127.0.0.1:27017/wtwr_db", {})
   .then(() => {
-    app.listen(PORT, () => {});
+    console.log("Connected to MongoDB: wtwr_db");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   })
   .catch((err) => {
     console.error("MongoDB connection error:", err);

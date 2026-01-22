@@ -5,7 +5,7 @@ const createUser = (req, res) => {
   const { name, avatar } = req.body;
 
   User.create({ name, avatar })
-    .then((user) => res.status(201).send({ data: user }))
+    .then((user) => res.status(201).send(user))
     .catch((err) => {
       console.error(err);
       if (err.name === "ValidationError") {
@@ -19,7 +19,7 @@ const createUser = (req, res) => {
 
 const getUsers = (req, res) => {
   User.find({})
-    .then((users) => res.status(200).send({ data: users }))
+    .then((users) => res.status(200).send(users))
     .catch((err) => {
       console.error(err);
       return res
@@ -33,7 +33,7 @@ const getUser = (req, res) => {
 
   User.findById(userId)
     .orFail()
-    .then((user) => res.status(200).send({ data: user }))
+    .then((user) => res.status(200).send(user))
     .catch((err) => {
       console.error(err);
       if (err.name === "DocumentNotFoundError") {

@@ -2,10 +2,10 @@ const ClothingItem = require("../models/clothingItem");
 const { BAD_REQUEST, NOT_FOUND, SERVER_ERROR } = require("../utils/errors");
 
 const createItem = (req, res) => {
-  const { name, weather, imageURL } = req.body;
+  const { name, weather, imageUrl } = req.body;
 
-  ClothingItem.create({ name, weather, imageURL })
-    .then((item) => res.status(200).send({ data: item }))
+  ClothingItem.create({ name, weather, imageUrl })
+    .then((item) => res.status(201).send(item))
     .catch((err) => {
       console.error(err);
       if (err.name === "ValidationError") {
@@ -19,7 +19,7 @@ const createItem = (req, res) => {
 
 const getItems = (req, res) => {
   ClothingItem.find({})
-    .then((items) => res.status(200).send({ data: items }))
+    .then((items) => res.status(200).send(items))
     .catch((err) => {
       console.error(err);
       return res
@@ -30,9 +30,9 @@ const getItems = (req, res) => {
 
 const updateItem = (req, res) => {
   const { itemId } = req.params;
-  const { imageURL } = req.body;
+  const { imageUrl } = req.body;
 
-  ClothingItem.findByIdAndUpdate(itemId, { $set: { imageURL } }, { new: true })
+  ClothingItem.findByIdAndUpdate(itemId, { $set: { imageUrl } }, { new: true })
     .orFail()
     .then((item) => res.status(200).send({ data: item }))
     .catch((err) => {
