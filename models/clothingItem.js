@@ -25,6 +25,12 @@ const clothingItemSchema = new mongoose.Schema({
       message: "Invalid data",
     },
   },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "user", required: true },
+  likes: {
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
+    default: [],
+  },
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("item", clothingItemSchema);
