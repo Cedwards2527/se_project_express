@@ -64,18 +64,22 @@ const getCurrentUser = (req, res) => {
 const login = (req, res) => {
   const { email, password } = req.body;
 
-  User.findUserByCredentials(email, password)
+  if (!email || !password) {
+    return res.status(400).send({ message: "Email and password are required" });
+  }
+
+  return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: "7d",
       });
-
       res.send({ token });
     })
     .catch(() => {
       res.status(401).send({ message: "Incorrect email or password" });
     });
 };
+
 const updateProfile = (req, res) => {
   const { name, avatar } = req.body;
   const userId = req.user._id;
