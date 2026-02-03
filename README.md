@@ -19,3 +19,8 @@ Nodemon — hot reload for development
 npm run start — launches the server normally
 
 npm run dev — launches the server with hot reload so changes show up instantly
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1idCMmLm-TJwqzHjPsaFMguwxBhqG5oII/view?usp=drive_link), where I describe my
+project and some challenges I faced while building it.
