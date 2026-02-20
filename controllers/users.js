@@ -75,8 +75,13 @@ const login = (req, res) => {
       });
       res.send({ token });
     })
-    .catch(() => {
+    .catch((err) => {
+      if (err.name === "Incorrect email or password"){
       res.status(UNAUTHORIZED).send({ message: "Incorrect email or password" });
+      }
+      return res
+              .status(SERVER_ERROR)
+              .send({ message: "An error has occurred on the server." });
     });
 };
 

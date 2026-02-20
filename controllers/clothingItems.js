@@ -23,7 +23,7 @@ const createClothingItem = (req, res) => {
 };
 
 const getClothingItems = (req, res) => {
-  ClothingItem.find({})
+  ClothingItem.find({}).populate("owner")
     .then((items) => res.status(200).send(items))
     .catch((err) => {
       console.error(err);
