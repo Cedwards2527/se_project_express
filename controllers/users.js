@@ -76,12 +76,16 @@ const login = (req, res) => {
       res.send({ token });
     })
     .catch((err) => {
-      if (err.name === "Incorrect email or password"){
-      res.status(UNAUTHORIZED).send({ message: "Incorrect email or password" });
+      if (err.message === "Incorrect password or email") {
+        return res
+          .status(UNAUTHORIZED)
+          .send({ message: "Incorrect password or email" });
       }
+
+      console.error(err);
       return res
-              .status(SERVER_ERROR)
-              .send({ message: "An error has occurred on the server." });
+        .status(SERVER_ERROR)
+        .send({ message: "An error has occurred on the server." });
     });
 };
 
@@ -92,7 +96,7 @@ const updateProfile = (req, res) => {
   User.findByIdAndUpdate(
     userId,
     { name, avatar },
-    { new: true, runValidators: true }
+    { new: true, runValidators: true },
   )
     .orFail()
     .then((user) => res.send(user))

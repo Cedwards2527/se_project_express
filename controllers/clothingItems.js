@@ -23,7 +23,8 @@ const createClothingItem = (req, res) => {
 };
 
 const getClothingItems = (req, res) => {
-  ClothingItem.find({}).populate("owner")
+  ClothingItem.find({})
+    .populate("owner")
     .then((items) => res.status(200).send(items))
     .catch((err) => {
       console.error(err);
@@ -63,7 +64,7 @@ const likeClothingItem = (req, res) => {
   ClothingItem.findByIdAndUpdate(
     req.params.itemId,
     { $addToSet: { likes: req.user._id } },
-    { new: true }
+    { new: true },
   )
     .orFail()
     .then((item) => res.status(200).send({ data: item }))
@@ -85,7 +86,7 @@ const dislikeClothingItem = (req, res) => {
   ClothingItem.findByIdAndUpdate(
     req.params.itemId,
     { $pull: { likes: req.user._id } },
-    { new: true }
+    { new: true },
   )
     .orFail()
     .then((item) => res.status(200).send({ data: item }))
