@@ -2,7 +2,7 @@ const { Joi, celebrate } = require('celebrate');
 const validator = require('validator');
 
 const validateURL = (value, helpers) => {
-  if (validator.isURL(value)) {
+  if (value === '' || validator.isURL(value)) {
     return value;
   }
   return helpers.error('string.uri');
@@ -19,7 +19,10 @@ const validateClothingitem = celebrate ({
   'string.empty': 'The "imageUrl" field must be filled in',
   'string.uri': 'The "imageUrl" field must be a valid url',
 }),
+    weather: Joi.string().required().messages({
+  'any.required': 'The "weather" field must be selected',
 }),
+  }),
 });
 
 
@@ -36,8 +39,7 @@ name: Joi.string().required().min(2).max(30).messages({
   "string.max": 'The "name" field must have less than 30 characters',
   'any.required': 'The "name" field must be filled in',
 }),
-avatar: Joi.string().required().custom(validateURL).messages({
-"string.empty": 'The "avatar" field must be filled in',
+avatar: Joi.string().allow('').custom(validateURL).messages({
 "string.uri": 'The "avatar" field must be a valid url',
    }),
 email: Joi.string().required().email().messages({
