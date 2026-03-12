@@ -27,4 +27,9 @@ project and some challenges I faced while building it.
 
 ## Frontend
 
-The backend repository for this project can be found here: [Frontend Repo](https://github.com/Cedwards2527/se_project_express)
+The Frontend repository for this project can be found here: [Frontend Repo](https://github.com/Cedwards2527/se_project_react)
+
+## Live Project
+
+The deployed project can be viewed here:
+https://cedwards-wtwr.sundby.com/
