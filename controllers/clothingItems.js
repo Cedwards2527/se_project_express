@@ -22,13 +22,9 @@ const getClothingItems = (req, res, next) => {
   ClothingItem.find({})
     .populate("owner")
     .then((items) => res.status(200).send(items))
-    .catch((err) => {
-    if (err.name === "CastError") {
-      return next(new BadRequestError("The id string is in an invalid format"));
-    }
-    return next(err);
-      });
-};
+    .catch(next);
+      };
+
 
 
 

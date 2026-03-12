@@ -25,10 +25,6 @@ app.get('/crash-test', () => {
 
 app.use("/", mainRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
-})
-
 app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
@@ -36,9 +32,11 @@ app.use(errorHandler);
 mongoose
   .connect("mongodb://127.0.0.1:27017/wtwr_db", {})
   .then(() => {
-    console.log("Connected to MongoDB: wtwr_db");
+   // eslint-disable-next-line no-console
+  console.log("Connected to MongoDB: wtwr_db");
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+   // eslint-disable-next-line no-console
+   console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
