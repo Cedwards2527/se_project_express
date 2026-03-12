@@ -22,5 +22,9 @@ npm run dev — launches the server with hot reload so changes show up instantly
 
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/1idCMmLm-TJwqzHjPsaFMguwxBhqG5oII/view?usp=drive_link), where I describe my
+Check out [this video](https://drive.google.com/file/d/1HH4GO79cXutkKZnwr_w6Vb7DSCdmOH4z/view?usp=sharing), where I describe my
 project and some challenges I faced while building it.
+
+## Frontend
+
+The backend repository for this project can be found here: [Frontend Repo](https://github.com/Cedwards2527/se_project_express)
